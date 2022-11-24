@@ -7,10 +7,10 @@ import ProfileName from "./components/ProfileName";
 function App() {
   return (
     <>
-      <Layout />
+      <Layout checked="true" times="0" />
 
-      <ProfileName name="John connor" />
-      <DefaultProfilePic alt="A Siluette of a person" />
+      {/* <ProfileName name="John connor" />
+      <DefaultProfilePic alt="A Siluette of a person" /> */}
     </>
   );
 }
