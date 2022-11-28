@@ -4,18 +4,18 @@ import { useState } from "react";
 import Hooks from "./components/Hooks";
 // import DefaultProfilePic from "./components/DefaultProfilePic";
 import Layout from "./components/layout/Layout";
+import First from "./components/First.js";
+import Booklist from "./components/books/Booklist.js";
+import GameList from "./components/games/GameList.js";
 // import ProfileName from "./components/ProfileName";
+import NewGameList from "./components/games/NewGameList.js";
 // import defaultImage from "../src/images/example.png";
 
 function App() {
   return (
     <>
-      <Kekw />
-      {/* <Hooks />
-      <Layout checked="true" times="0" /> */}
-
-      {/* <ProfileName name="John connor" />
-      <DefaultProfilePic alt="A Siluette of a person" /> */}
+      {/* <GameList /> */}
+      <NewGameList />
     </>
   );
 }

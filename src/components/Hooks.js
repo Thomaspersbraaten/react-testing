@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 export default function Hooks() {
@@ -17,6 +17,9 @@ export default function Hooks() {
     setAge(age + 1);
     setNumber(number + Math.random() * 999);
   }
+  useEffect(() => {
+    console.log(age);
+  }, [age]);
   return (
     <div>
       <div>
