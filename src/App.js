@@ -9,13 +9,27 @@ import Booklist from "./components/books/Booklist.js";
 import GameList from "./components/games/GameList.js";
 // import ProfileName from "./components/ProfileName";
 import NewGameList from "./components/games/NewGameList.js";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import GameItem from "./components/games/GameItem.js";
+import GameDetail from "./components/games/GameDetail.js";
+import SimpleExample from "./components/contact/form/SimpleExample.js";
+import YupForm from "./components/contact/form/YupForm.js";
 // import defaultImage from "../src/images/example.png";
 
 function App() {
   return (
     <>
       {/* <GameList /> */}
-      <NewGameList />
+      {/* <Router>
+        <Routes>
+          <Route path="/" element={<NewGameList />}></Route>
+          <Route path="game/:slug" element={<GameDetail />}></Route>
+        </Routes>
+      </Router> */}
+      {/* <SimpleExample></SimpleExample> */}
+      <YupForm />
+
+      {/* <Layout /> */}
     </>
   );
 }

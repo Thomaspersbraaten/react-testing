@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { GAME_API } from "../constants/gameApi";
 import { Col, Row, Container } from "react-bootstrap";
 import GameItem from "./GameItem.js";
+import { Routes } from "react-router-dom";
 
 function NewGameList() {
   const [games, setGames] = useState([]);
@@ -40,7 +41,7 @@ function NewGameList() {
       <Row>
         {games.map(function (game) {
           const { slug, name, image, released, genre } = game;
-          return <GameItem key={slug} name={name} image={image} released={released} genre={genre} />;
+          return <GameItem key={slug} slug={slug} name={name} image={image} released={released} genre={genre} />;
         })}
       </Row>
     </Container>

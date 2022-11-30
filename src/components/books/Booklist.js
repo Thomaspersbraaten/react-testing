@@ -1,5 +1,6 @@
 import { API_URL } from "../constants/api";
 import { useEffect, useState } from "react";
+import BookItem from "./BookItem";
 
 export default function Booklist() {
   const [books, setBooks] = useState([]);
@@ -12,7 +13,7 @@ export default function Booklist() {
         const response = await fetch(API_URL);
         if (response.ok) {
           const json = await response.json();
-          console.log(json);
+          // console.log(json);
           setBooks(json);
         } else {
           setError("An error occureddd");
@@ -34,7 +35,8 @@ export default function Booklist() {
   return (
     <>
       {books.map(function (book) {
-        return <div key={book.id}>{book.title}</div>;
+        const { id, title, published } = book;
+        return <BookItem key={id} id={id} title={title} published={published}></BookItem>;
       })}
     </>
   );
