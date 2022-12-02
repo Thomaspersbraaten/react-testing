@@ -14,23 +14,33 @@ import GameItem from "./components/games/GameItem.js";
 import GameDetail from "./components/games/GameDetail.js";
 import SimpleExample from "./components/contact/form/SimpleExample.js";
 import YupForm from "./components/contact/form/YupForm.js";
+import Navigation from "./components/ma2/Navigation.js";
+import Home from "./components/ma2/Home.js";
+import Contact from "./components/ma2/Contact.js";
+import GetProducts from "./components/ma2/API/GetProducts.js";
+import { Container } from "react-bootstrap";
+import GetProductDetail from "./components/ma2/API/GetProductDetail.js";
 // import defaultImage from "../src/images/example.png";
 
 function App() {
   return (
-    <>
-      {/* <GameList /> */}
-      {/* <Router>
+    <Router>
+      <Navigation />
+      <Container className="main-container">
         <Routes>
-          <Route path="/" element={<NewGameList />}></Route>
-          <Route path="game/:slug" element={<GameDetail />}></Route>
+          <Route
+            path="/"
+            element={
+              <>
+                <Home /> <GetProducts />
+              </>
+            }
+          ></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/details/:id" element={<GetProductDetail />}></Route>
         </Routes>
-      </Router> */}
-      {/* <SimpleExample></SimpleExample> */}
-      <YupForm />
-
-      {/* <Layout /> */}
-    </>
+      </Container>
+    </Router>
   );
 }
 
