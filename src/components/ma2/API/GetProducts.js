@@ -35,7 +35,7 @@ export default function GetProducts() {
     return (
       <>
         <Spinner />
-        <div>stuff be loadin</div>
+        <div>Products are loading</div>
       </>
     );
   } else if (error) {

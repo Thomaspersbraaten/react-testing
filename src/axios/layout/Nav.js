@@ -43,13 +43,22 @@ function Nav() {
 
   return (
     <nav>
-      <Link to="/">Home</Link>
+      <Link to="/" className="nav-link">
+        Home
+      </Link>
       {auth ? (
         <>
-          | <Link to="/dashboard">Dashboard</Link> | <button onClick={logout}>Log out</button>
+          {" "}
+          |{" "}
+          <Link to="/dashboard" className="nav-link">
+            Dashboard
+          </Link>{" "}
+          | <button onClick={logout}>Log out</button>
         </>
       ) : (
-        <Link to="/login">Login</Link>
+        <Link to="/login" className="nav-link">
+          Login
+        </Link>
       )}
     </nav>
   );

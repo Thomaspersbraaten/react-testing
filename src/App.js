@@ -1,5 +1,5 @@
 // import Kekw from "./components/modalandbutton/KekModal.js";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 // import { useState } from "react";
 // import Hooks from "./components/Hooks";
 // // import DefaultProfilePic from "./components/DefaultProfilePic";
@@ -54,7 +54,13 @@ import DashboardPage from "./axios/dashboard/DashboardPage";
 import Nav from "./axios/layout/Nav";
 import HomePage from "./axios/home/HomePage";
 import { AuthProvider } from "./axios/context/AuthContext";
-// import "./App.css";
+import Footer from "./axios/layout/Footer";
+import "./index.scss";
+import { FooterProvider } from "./axios/layout/FooterContext";
+import Dropdown from "./axios/layout/Dropdown";
+import AddPost from "./axios/dashboard/posts/AddPost";
+import PostPage from "./axios/dashboard/posts/PostPage";
+import EditPost from "./axios/dashboard/posts/EditPost";
 
 function App() {
   return (
@@ -65,11 +71,17 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
-
             <Route path="/login" element={<LoginPage />}></Route>
             <Route path="/dashboard" element={<DashboardPage />}></Route>
+            <Route path="/dashboard/posts" exact element={<PostPage />}></Route>
+            <Route path="/dashboard/posts/add" element={<AddPost />}></Route>
+            <Route path="/dashboard/posts/edit/:id" element={<EditPost />}></Route>
           </Routes>
         </div>
+        {/* <FooterProvider>
+          <Dropdown />
+          <Footer />
+        </FooterProvider> */}
       </Router>
     </AuthProvider>
   );
