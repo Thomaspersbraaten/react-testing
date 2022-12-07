@@ -4,7 +4,6 @@ import useLocalStorage from "../login/useLocalStorage";
 export const AuthContext = createContext([null, () => {}]);
 export const AuthProvider = (props) => {
   const [auth, setAuth] = useLocalStorage("auth", null);
-  console.log(auth);
   return <AuthContext.Provider value={[auth, setAuth]}>{props.children}</AuthContext.Provider>;
 };
 

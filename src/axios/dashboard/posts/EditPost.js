@@ -1,7 +1,7 @@
 import Heading from "../../layout/Heading";
 import DashboardPage from "../DashboardPage";
 import { useEffect, useState } from "react";
-import { Container, Spinner } from "react-bootstrap";
+import { Button, Container, FormSelect, Spinner } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import ErrorComponent from "../../../components/ma2/API/ErrorComponent";
 import useAxios from "../../hooks/useAxios";
@@ -10,9 +10,12 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Message from "../../components/Message";
+import DeletePostButton from "./DeletePostButton";
+import { StatusDropdown } from "../../components/StatusDropdown";
 const schema = yup.object().shape({
   title: yup.string().required("Title is required").min(3, "Please make title at least 4 characters"),
   content: yup.string().required("Content is required").min(10, "Content must be minimum 10 characters"),
+  status: yup.string().required("ok"),
 });
 export default function EditPost() {
   const [post, setPost] = useState([]);
@@ -21,6 +24,7 @@ export default function EditPost() {
   const [updatingPost, setUpdatingPost] = useState(false);
   const [updateError, setUpdateError] = useState(null);
   const [fetchingPost, setFetchingPost] = useState(true);
+  const [status, setStatus] = useState("published");
 
   const {
     register,
@@ -62,8 +66,36 @@ export default function EditPost() {
       setUpdatingPost(false);
     }
   }
+
+  const statuses = [
+    {
+      label: "publish",
+      value: "publish",
+    },
+    {
+      label: "future",
+      value: "future",
+    },
+    {
+      label: "draft",
+      value: "draft",
+    },
+    {
+      label: "pending",
+      value: "pending",
+    },
+    {
+      label: "private",
+      value: "private",
+    },
+  ];
+
   if (fetchingPost) return <div>loading..</div>;
   if (fetchError) return <ErrorComponent variant="danger" message="ok" />;
+  // function handleChange(e) {
+  //   setStatus(e.target.value);
+  // }
+
   return (
     <DashboardPage>
       <Heading content="Edit Post" />
@@ -82,7 +114,15 @@ export default function EditPost() {
 
             {errors.content && <Message variant="warning" message={errors.content.message} />}
           </div>
+          <FormSelect name="status" {...register("status")} defaultValue={post.status}>
+            {statuses.map((status) => (
+              <option key={status.value}>{status.label}</option>
+            ))}
+            ;
+          </FormSelect>
           <button>Update</button>
+          <hr />
+          <DeletePostButton id={post.id} />
         </fieldset>
       </form>
     </DashboardPage>

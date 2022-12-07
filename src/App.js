@@ -61,16 +61,18 @@ import Dropdown from "./axios/layout/Dropdown";
 import AddPost from "./axios/dashboard/posts/AddPost";
 import PostPage from "./axios/dashboard/posts/PostPage";
 import EditPost from "./axios/dashboard/posts/EditPost";
+import Post from "./axios/posts/Post";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Nav />
-
         <div className="container">
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
+            <Route path="/post/:id" element={<Post />}></Route>
+
             <Route path="/login" element={<LoginPage />}></Route>
             <Route path="/dashboard" element={<DashboardPage />}></Route>
             <Route path="/dashboard/posts" exact element={<PostPage />}></Route>
